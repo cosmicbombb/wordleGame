@@ -1,11 +1,8 @@
 import random
 
 
-#word to be guessed
+# Word to be guessed
 hidden_word = random.choice(["this", "five", "lake", "yolo", "wack", "pink"])
-
-#number of attempts the user is allowed
-attempt = 5
 
 
 def give_instructions():
@@ -19,21 +16,21 @@ def give_instructions():
     
 
 def check_word(guess):
-    #the word guessed was correct
+    # The word guessed was correct
     if hidden_word == guess:
         print("Congrats!! You did it.")
         return True
     result = ""
-    #zip pairs
+    # zip pairs
     for i, j in zip(guess, hidden_word):
         if i == j:
-            #the letter is correct
+            # The letter is correct
             result += ("*")    
         elif i in hidden_word:
-            #the letter is in the word but not the correct spot
+            # The letter is in the word but not the correct spot
             result += ("$")    
         else:
-            #the letter is not in the word
+            # The letter is not in the word
             result += ("x") 
     print(result)
     return False
@@ -47,7 +44,6 @@ def main():
         if check_word(guess):
             return
         else:
-            #attempt = attempt - 1
             attempt -= 1
             print(f"You have {attempt} attempts left.")
     print("GAME OVER! :(")
