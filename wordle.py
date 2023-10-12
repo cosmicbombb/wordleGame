@@ -1,5 +1,10 @@
 import random
 
+
+# Word to be guessed
+hidden_word = random.choice(["this", "five", "lake", "yolo", "wack", "pink"])
+
+
 def give_instructions():
     print('''\n Wordle is a word guessing game.
     You have 5 attempts
@@ -8,54 +13,41 @@ def give_instructions():
     (x) means the letter is not in the word
         
     Best of luck!''')
-
-
-
-#words that can be the guessed word
-words = ["this", "five", "lake", "yolo", "wack", "pink"]
-
-#word to be guessed
-hidden_word = random.choice(words)
-
-#number of attempts the user is allowed
-attempt = 5
+    
 
 def check_word(guess):
-
-        #the word guessed was correct
+    # The word guessed was correct
     if hidden_word == guess:
         print("Congrats!! You did it.")
         return True
-    else:
-        result = ""
-        #zip pairs
-        for i,j in zip(guess, hidden_word):
-            if i == j:
-                #the letter is correct
-                result = result + ("*")
-                
-            elif i in hidden_word:
-                #the letter is in the word but not the correct spot
-                result = result + ("$")
-                
-            else:
-                #the letter is not in the word
-                result = result + ("x")
-            
-        print(result)
-        return False
-            
+    result = ""
+    # zip pairs
+    for i, j in zip(guess, hidden_word):
+        if i == j:
+            # The letter is correct
+            result += ("*")    
+        elif i in hidden_word:
+            # The letter is in the word but not the correct spot
+            result += ("$")    
+        else:
+            # The letter is not in the word
+            result += ("x") 
+    print(result)
+    return False
+
+
 def main():
     attempt = 5
     give_instructions()
     while attempt > 0:
         guess = input("Enter a four letter word: ")
         if check_word(guess):
-            break
+            return
         else:
-            #attempt = attempt - 1
             attempt -= 1
             print(f"You have {attempt} attempts left.")
-    else:
-        print("GAME OVER! :(")
-main()
+    print("GAME OVER! :(")
+
+
+if __name__ == "__main__":
+    main()
