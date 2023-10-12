@@ -25,7 +25,7 @@ def check_word(guess):
         return True
     result = ""
     #zip pairs
-    for i,j in zip(guess, hidden_word):
+    for i, j in zip(guess, hidden_word):
         if i == j:
             #the letter is correct
             result += ("*")    
