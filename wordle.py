@@ -45,13 +45,12 @@ def main():
     while attempt > 0:
         guess = input("Enter a four letter word: ")
         if check_word(guess):
-            break
+            return
         else:
             #attempt = attempt - 1
             attempt -= 1
             print(f"You have {attempt} attempts left.")
-    else:
-        print("GAME OVER! :(")
+    print("GAME OVER! :(")
 
 
 if __name__ == "__main__":
